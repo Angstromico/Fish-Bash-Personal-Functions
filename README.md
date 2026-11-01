@@ -29,6 +29,35 @@ The Python tools are modular. Simply run the scripts in `python/bin/`:
 ./python/bin/cachy-helper.py
 ```
 
+## Fish Functions Reference
+
+### `join-videos`
+
+Joins two or more video files into a single output file using FFmpeg's stream copy (no re-encoding, lossless and fast).
+
+#### Prerequisites
+
+```bash
+sudo pacman -S ffmpeg
+```
+
+#### Usage
+
+```fish
+join-videos video1.mp4 video2.mp4 [video3.mp4 ...] output.mp4
+```
+
+- Pass **at least two input files** followed by the **output filename** as the last argument.
+- Uses `ffmpeg -f concat -c copy` under the hood — no quality loss, near-instant concatenation.
+
+#### Example
+
+```fish
+join-videos part1.mp4 part2.mp4 part3.mp4 full_video.mp4
+```
+
+---
+
 ## Scalability & Maintenance
 
 - **Modularity:** Python code is organized into a proper package (`src/cachy_utils`), allowing for easy testing and expansion.
